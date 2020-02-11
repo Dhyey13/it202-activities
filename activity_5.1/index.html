@@ -1,0 +1,51 @@
+<!doctype html>
+
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+
+  <title>Activity 5.1</title>
+    
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.12.1/css/all.css" integrity="sha384-v8BU367qNbs/aIZIxuivaU55N5GPF89WBerHoGA4QTcbUjYiLQtKdrfXnqAcXyTv" crossorigin="anonymous">    
+  <style>
+      body
+      {
+         padding: 25px;
+      }
+  </style>
+    
+</head>
+    <body>
+      <script>
+      
+      let myUrl = "https://api.nasa.gov/planetary/apod?api_key=opdcCcZtNOesuFrItFz9dhCR5SggwggNRTIWoOOW";
+              
+      fetch(myUrl)
+      .then(response => {return response.json()})
+      .then(json => {
+          
+          let Title = json.title;
+          let H1 = document.createElement('h1')
+          H1.textContent = Title;
+          document.body.appendChild(H1);
+          
+          let Date = json.date;
+          let Explaiantion = json.explanation;
+          let i = document.createElement('i')
+          i.textContent = Date;
+          i.append(Explaiantion);
+          document.body.appendChild(i); 
+          
+          let img = document.createElement("IMG");
+          let imgUrl = json.hdurl;
+          img.setAttribute("width", "600");
+          img.setAttribute("height", "700");
+          img.setAttribute("src", imgUrl);
+          document.body.appendChild(img); 
+          
+      }) 
+      .catch(err => alert(err))
+  
+      </script>
+    </body>
+</html>
