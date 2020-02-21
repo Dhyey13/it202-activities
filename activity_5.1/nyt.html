@@ -1,0 +1,37 @@
+<!doctype html>
+
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+
+  <title>Activity 5.1</title>
+    
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.12.1/css/all.css" integrity="sha384-v8BU367qNbs/aIZIxuivaU55N5GPF89WBerHoGA4QTcbUjYiLQtKdrfXnqAcXyTv" crossorigin="anonymous">    
+  <style>
+      body
+      {
+         padding: 25px;
+      }
+  </style>
+    
+</head>
+    <body>
+      <script>
+      
+      let myUrl = "https://api.nytimes.com/svc/search/v2/articlesearch.json?q=Chicago&api-key=l4TaX4wafpJ0237rMRRx3MSEFSoeWfAF";
+              
+      fetch(myUrl)
+      .then(response => {return response.json()})
+      .then(json => {
+          
+          for (let article of json.response.docs) {
+              document.body.append(article["headline"]["main"])
+              let p = document.createElement('p')
+              document.body.appendChild(p);
+          }
+      })
+      .catch(err => alert(err))
+  
+      </script>
+    </body>
+</html>
